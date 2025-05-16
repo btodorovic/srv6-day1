@@ -1,0 +1,5 @@
+set interfaces ge-0/0/3 description "private13 :: p1 (ge-0/0/3) -- pe1 (ge-0/0/3)
+set interfaces ge-0/0/4 description "private23 :: p1 (ge-0/0/4) -- pe2 (ge-0/0/3)
+set interfaces ge-0/0/0 description "private34 :: p1 (ge-0/0/0) -- p2 (ge-0/0/0)
+set interfaces ge-0/0/1 description "private35 :: p1 (ge-0/0/1) -- p3 (ge-0/0/0)
+set interfaces ge-0/0/2 description "private36 :: p1 (ge-0/0/2) -- p4 (ge-0/0/0)

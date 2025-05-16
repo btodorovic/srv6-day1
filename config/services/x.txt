@@ -1,0 +1,8 @@
+set protocols bgp group ibgp family inet-vpn unicast advertise-srv6-service
+set protocols bgp group ibgp family inet-vpn unicast accept-srv6-service
+set protocols bgp group ibgp family inet6-vpn unicast advertise-srv6-service
+set protocols bgp group ibgp family inet6-vpn unicast accept-srv6-service
+set protocols bgp group ibgp family inet unicast extended-nexthop
+set protocols bgp group ibgp family inet6 unicast extended-nexthop-color
+set routing-options transport-class auto-create
+set protocols source-packet-routing use-transport-class

@@ -1,0 +1,18 @@
+PHASE 3
+IPv4	222.222.1.0/24
+LBv4	222.222.0.0/24
+IPv6	2001:222:1::/48
+LBv6	2001:222:0::/48
+PREFIX	30	64
+ID	1
+VMX_DISK /homes/btodorovic/junos-x86-64-20.2R3-S5.6.vmdk
+AS 222
+isis	pe11	pe22
+isis	pe11	p11
+isis	pe22	p22
+isis	p11	p22
+isis	pe33	pe44
+isis	pe33	p11
+isis	pe44	p22
+isis	rr11	p11
+bgp	rr11	pe11	pe22	pe33	pe44

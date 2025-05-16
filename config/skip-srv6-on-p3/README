@@ -1,0 +1,2 @@
+Here, p3 is stripped off from all its SRv6 functions, we made it a pure IPv6 router.
+This is just a demo showing that L3VPNs keep working, even though P3 as a transit node does not support SRv6.

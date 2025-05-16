@@ -1,0 +1,32 @@
+#define PHASE3
+#include "/vmm/data/user_disks/vmxc/common.vmx.p3.defs"
+#define VMX_DISK basedisk "/vmm/data/user_disks/btodorovic/junos-x86-64-22.4R3.15.vmdk";
+XXX
+TOPOLOGY_START(vmx_topology)
+XXX
+{% for host in bridge %}
+// - {{ host }} - MX960
+#undef VMX_CHASSIS_I2CID
+#undef VMX_CHASSIS_NAME
+#define VMX_CHASSIS_I2CID 21
+XXX
+#define VMX_CHASSIS_NAME  {{ host }}
+XXX
+  VMX_CHASSIS_START()
+    VMX_RE_START({{ host }}, 0)
+      VMX_RE_INSTANCE({{ host }}, VMX_DISK, VMX_RE_I2CID, 0)
+VMX_SYSTEST_CONFIG
+      SSH_KEY_INSTALL
+    VMX_RE_END
+XXX
+    VMX_MPC_START({{ host }}_MPC, 0)
+        VMX_MPC_INSTANCE({{ host }}_MPC, VMX_DISK, VMX_MPC_I2CID, 0)
+    {% for port in bridge[host] %}{% set port_id = port.split('/')[-1] %}{% set bridge_id = bridge[host][port] %}
+        VMX_CONNECT(GE(0,0,{{ port_id }}), private{{ bridge_id }})
+    {% endfor %}
+    VMX_MPC_END
+  VMX_CHASSIS_END
+XXX
+{% endfor %}
+PRIVATE_BRIDGES
+TOPOLOGY_END

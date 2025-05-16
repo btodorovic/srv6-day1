@@ -1,0 +1,6 @@
+set policy-options policy-statement PS-DIRECT-TO-6PE term DIRECT from protocol [ direct isis bgp ]
+set policy-options policy-statement PS-DIRECT-TO-6PE term DIRECT from interface ge-0/1/9.0
+set policy-options policy-statement PS-DIRECT-TO-6PE term DIRECT from family inet6
+set policy-options policy-statement PS-DIRECT-TO-6PE term DIRECT then next-hop self
+set policy-options policy-statement PS-DIRECT-TO-6PE term DIRECT then accept
+set protocols bgp group rr export PS-DIRECT-TO-6PE
